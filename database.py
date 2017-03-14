@@ -1,11 +1,8 @@
-import csv
+import mysql.connector as mariadb
 
-results = []
-with open('category.txt', newline='') as inputfile:
-	for row in csv.reader(inputfile):
-		results.append(row)
+mariadb_connection = mariadb.connect(user='publicapp', password='public', host='yamaseiki.cuuhkmqhmrw0.us-west-1.rds.amazonaws.com', port='3306', database='inventory')
 
+cursor = mariadb_connection.cursor()
 
-
-		
-print(results[1][0])
+print("Done")
+input()

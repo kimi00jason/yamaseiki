@@ -1,8 +1,15 @@
-import mysql.connector as mariadb
+import pymysql
 
-mariadb_connection = mariadb.connect(user='publicapp', password='public', host='yamaseiki.cuuhkmqhmrw0.us-west-1.rds.amazonaws.com', port='3306', database='inventory')
+conn = pymysql.connect(host='yamaseiki.cuuhkmqhmrw0.us-west-1.rds.amazonaws.com', port=3306, user='publicapp', passwd='public', db='inventory')
 
-cursor = mariadb_connection.cursor()
+cur = conn.cursor()
+cur.execute("SELECT * FROM catagory")
 
-print("Done")
-input()
+print(cur.description)
+print()
+
+for row in cur:
+    print(row)
+
+cur.close()
+conn.close()
